@@ -1,6 +1,6 @@
 - name: "Prueba"
   hosts: all
-  gather_facts: false
+  gather_facts: true
   vars: 
     aix_reports_path: /tmp
     
