@@ -1,5 +1,5 @@
 - name: "Banco Pichincha ::: Remediación AIX - Remediacion nodos de App y BDD en EnP- Preparacion de items"
-  hosts: localhost
+  hosts: all
   gather_facts: false
   vars: 
     aix_reports_path: /tmp
