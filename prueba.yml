@@ -16,9 +16,7 @@
       aix_report_file: "{{ aix_report_pre_patch }}"
       
   - name: "Definir hechos - Parte 2"
-    ansible.builtin.set_stats:
-      data:
-        aix_report_pre_patch: "{{ ansible_hostname }}_{{ ansible_date_time.date }}_{{ ansible_date_time.hour  }}{{ ansible_date_time.minute }}{{ ansible_date_time.second  }}_{{ tower_job_id }}_PRE.txt"
-      per_host: false
-      aggregate: false
+    ansible.builtin.copy:
+      content: "{{ ansible_hostname }}_{{ ansible_date_time.date }}_{{ ansible_date_time.hour  }}{{ ansible_date_time.minute }}{{ ansible_date_time.second  }}_{{ tower_job_id }}_PRE.txt"
+      dest: /tmp/report_pre_patch
 
