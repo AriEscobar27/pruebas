@@ -15,15 +15,15 @@
     vars:
       aix_report_file: "{{ aix_report_pre_patch }}"
       
-  - name: "Banco Pichincha ::: Remediación AIX - Definir hechos para Paso 2 APP - Parte 2"
-    ansible.builtin.set_stats:
-      data:
-        aix_report_pre_patch_var: "{{ aix_report_pre_patch }}"
-      per_host: true
-      aggregate: false
+  #- name: "Banco Pichincha ::: Remediación AIX - Definir hechos para Paso 2 APP - Parte 2"
+  #  ansible.builtin.set_stats:
+  #    data:
+  #      aix_report_pre_patch_var: "{{ aix_report_pre_patch }}"
+  #    per_host: true
+  #    aggregate: false
       
-  #- name: "Definir hechos - Parte 2"
-  #  ansible.builtin.copy:
-  #    content: "{{ ansible_hostname }}_{{ ansible_date_time.date }}_{{ ansible_date_time.hour  }}{{ ansible_date_time.minute }}{{ ansible_date_time.second  }}_{{ tower_job_id }}_PRE.txt"
-  #   dest: /tmp/report_pre_patch.txt
+  - name: "Definir hechos - Parte 2"
+    ansible.builtin.copy:
+      content: "{{ aix_report_pre_patch }}"
+      dest: /tmp/report_pre_patch.txt
 
