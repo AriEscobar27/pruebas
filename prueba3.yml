@@ -13,15 +13,15 @@
     vars:
       aix_report_file: "{{ aix_report_post_patch }}"
       
-   - name: "Comparar informacion de reportes pre y post patching "
-     ansible.builtin.shell: >-
-       diff {{ aix_report_pre_patch }}  {{ aix_report_post_patch }}
-     args:
-       chdir: "{{ aix_reports_path }}"
-     register: registro_aix_comparar_reportes
-     failed_when: registro_aix_comparar_reportes.rc > 1
-     changed_when: registro_aix_comparar_reportes.rc == 1
+  - name: "Comparar informacion de reportes pre y post patching "
+    ansible.builtin.shell: >-
+      diff {{ aix_report_pre_patch }}  {{ aix_report_post_patch }}
+    args:
+      chdir: "{{ aix_reports_path }}"
+    register: registro_aix_comparar_reportes
+    failed_when: registro_aix_comparar_reportes.rc > 1
+    changed_when: registro_aix_comparar_reportes.rc == 1
     
-    - name: "Comparar informacion de reportes pre y post patching - Resultado"
-      ansible.builtin.debug:
-        msg: "{{ registro_aix_comparar_reportes.stdout_lines }}" 
+  - name: "Comparar informacion de reportes pre y post patching - Resultado"
+    ansible.builtin.debug:
+      msg: "{{ registro_aix_comparar_reportes.stdout_lines }}" 
