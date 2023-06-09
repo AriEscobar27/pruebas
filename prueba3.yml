@@ -1,6 +1,6 @@
 - name: "Continuar parchado"
   hosts: all
-  gather_facts: false
+  gather_facts: true
   order: sorted
   tasks:
   - name: "Definir hechos "
