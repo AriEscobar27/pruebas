@@ -1,8 +1,8 @@
-- name: "Banco Pichincha ::: Remediación AIX - Remediacion nodos DB - Preparar items"
+- name: "Create file"
   hosts: all
   gather_facts: false
   tasks:
       - name: "Banco Pichincha ::: Remediación AIX - Creacion del archivo db_encendida"
         ansible.builtin.copy:
           content: '1'
-          dest: "/tmp/db_encendida"
+          dest: "/tmp/encendida"
