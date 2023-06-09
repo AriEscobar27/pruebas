@@ -2,6 +2,8 @@
   hosts: all
   gather_facts: true
   order: sorted
+  vars: 
+    aix_reports_path: /tmp
   tasks:
   - name: "Definir hechos "
     ansible.builtin.set_fact:
