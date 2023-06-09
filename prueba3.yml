@@ -13,14 +13,6 @@
     vars:
       aix_report_file: "{{ aix_report_post_patch }}"
       
-  - name: "Definir hechos - Parte 1"
-    ansible.builtin.set_stats:
-      data:
-        success_list: '{{ hostvars | dict2items | json_query(success_query) }}' 
-      per_host: false
-    vars:
-      success_query: "[?value.job_success==`true`].key"
-      
    - name: "Comparar informacion de reportes pre y post patching "
         ansible.builtin.shell: >-
           diff {{ aix_report_pre_patch }}  {{ aix_report_post_patch }}
