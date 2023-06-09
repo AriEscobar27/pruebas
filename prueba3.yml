@@ -17,7 +17,7 @@
       
   - name: "Get report_pre_patch"
     ansible.builtin.set_fact:
-      aix_report_pre_patch: "{{ lookup('ansible.builtin.file', '/tmp/report_pre_patch.txt') }}"
+      aix_report_pre_patch_var: "{{ lookup('ansible.builtin.file', '/tmp/report_pre_patch.txt') }}"
       
   - name: "Comparar informacion de reportes pre y post patching "
     ansible.builtin.shell: >-
@@ -31,3 +31,8 @@
   - name: "Comparar informacion de reportes pre y post patching - Resultado"
     ansible.builtin.debug:
       msg: "{{ registro_aix_comparar_reportes.stdout_lines }}" 
+      
+  - name: "Eliminacion del archivo"
+    ansible.builtin.file:
+      path: "/tmp/report_pre_patch.txt"
+      state: absent
