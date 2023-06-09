@@ -15,7 +15,7 @@
       
   - name: "Comparar informacion de reportes pre y post patching "
     ansible.builtin.shell: >-
-      diff {{ aix_report_pre_patch }}  {{ aix_report_post_patch }}
+      diff "{{ aix_report_pre_patch }}"  "{{ aix_report_post_patch }}"
     args:
       chdir: "{{ aix_reports_path }}"
     register: registro_aix_comparar_reportes
