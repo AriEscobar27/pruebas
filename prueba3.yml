@@ -1,19 +1,19 @@
-- name: "Banco Pichincha ::: Remediación AIX - Remediacion nodos APP Fase 2 - Continuar parchado"
+- name: "Continuar parchado"
   hosts: all
   gather_facts: false
   order: sorted
   tasks:
-  - name: "Banco Pichincha ::: Remediación AIX - Definir hechos "
+  - name: "Definir hechos "
         ansible.builtin.set_fact:
           aix_report_post_patch: "{{ ansible_hostname }}_{{ ansible_date_time.date }}_{{ ansible_date_time.hour  }}{{ ansible_date_time.minute }}{{ ansible_date_time.second  }}_{{ tower_job_id }}_POST.txt"
   
-  - name: "Banco Pichincha ::: Remediación AIX - Tomar evidencias previas al parchado"
+  - name: "Tomar evidencias previas al parchado"
     ansible.builtin.include_tasks:
       file: generar_status_aix.yaml
     vars:
       aix_report_file: "{{ aix_report_post_patch }}"
       
-  - name: "Banco Pichincha ::: Remediación AIX - Definir hechos para Paso 2 APP - Parte 1"
+  - name: "Definir hechos - Parte 1"
     ansible.builtin.set_stats:
       data:
         success_list: '{{ hostvars | dict2items | json_query(success_query) }}' 
@@ -21,7 +21,7 @@
     vars:
       success_query: "[?value.job_success==`true`].key"
       
-   - name: "Banco Pichincha ::: Remediación AIX - Comparar informacion de reportes pre y post patching "
+   - name: "Comparar informacion de reportes pre y post patching "
         ansible.builtin.shell: >-
           diff {{ aix_report_pre_patch }}  {{ aix_report_post_patch }}
         args:
@@ -30,6 +30,6 @@
         failed_when: registro_aix_comparar_reportes.rc > 1
         changed_when: registro_aix_comparar_reportes.rc == 1
     
-    - name: "Banco Pichincha ::: Remediación AIX - Comparar informacion de reportes pre y post patching - Resultado"
+    - name: "Comparar informacion de reportes pre y post patching - Resultado"
         ansible.builtin.debug:
           msg: "{{ registro_aix_comparar_reportes.stdout_lines }}" 
