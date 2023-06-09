@@ -1,5 +1,5 @@
 - name: "Banco Pichincha ::: Remediación AIX - Remediacion nodos DB - Preparar items"
-  hosts: localhost
+  hosts: all
   gather_facts: false
   tasks:
       - name: "Banco Pichincha ::: Remediación AIX - Creacion del archivo db_encendida"
