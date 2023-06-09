@@ -19,6 +19,6 @@
     ansible.builtin.set_stats:
       data:
         aix_report_pre_patch: "{{ ansible_hostname }}_{{ ansible_date_time.date }}_{{ ansible_date_time.hour  }}{{ ansible_date_time.minute }}{{ ansible_date_time.second  }}_{{ tower_job_id }}_PRE.txt"
-      per_host: false
+      per_host: true
       aggregate: false
 
