@@ -17,7 +17,7 @@
       
   - name: "Get report_pre_patch"
     set_fact:
-      aix_report_pre_patch: "{{ lookup('file', '/tmp/report_pre_patch') }}"
+      aix_report_pre_patch: "{{ lookup('file', '/tmp/report_pre_patch.txt') }}"
       
   - name: "Comparar informacion de reportes pre y post patching "
     ansible.builtin.shell: >-
