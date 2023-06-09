@@ -1,0 +1,31 @@
+- name: "Banco Pichincha ::: Remediación AIX - Remediacion nodos de App y BDD en EnP- Preparacion de items"
+  hosts: localhost
+  gather_facts: false
+  vars: 
+    aix_reports_path: /tmp
+    
+  tasks:
+  - name: "Banco Pichincha ::: Remediación AIX - Definir hechos para Reporte"
+    ansible.builtin.set_fact:
+      aix_report_pre_patch: "{{ ansible_hostname }}_{{ ansible_date_time.date }}_{{ ansible_date_time.hour }}{{ ansible_date_time.minute }}{{ ansible_date_time.second }}_{{ tower_job_id }}_PRE.txt"
+
+  - name: "Banco Pichincha ::: Remediación AIX - Tomar evidencias previas al parchado"
+    ansible.builtin.include_tasks:
+      file: generar_status_aix.yaml
+    vars:
+      aix_report_file: "{{ aix_report_pre_patch }}"
+      
+  - name: "Banco Pichincha ::: Remediación AIX - Definir hechos para Paso 2 APP - Parte 1"
+    ansible.builtin.set_stats:
+      data:
+        success_list: '{{ hostvars | dict2items | json_query(success_query) }}' 
+      per_host: false
+    vars:
+      success_query: "[?value.job_success==`true`].key"
+      
+  - name: "Banco Pichincha ::: Remediación AIX - Definir hechos para Paso 2 APP - Parte 2"
+    ansible.builtin.set_stats:
+      data:
+        aix_report_pre_patch: "{{ ansible_hostname }}_{{ ansible_date_time.date }}_{{ ansible_date_time.hour  }}{{ ansible_date_time.minute }}{{ ansible_date_time.second  }}_{{ tower_job_id }}_PRE.txt"
+      per_host: true
+      aggregate: false
