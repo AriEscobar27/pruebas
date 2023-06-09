@@ -18,5 +18,5 @@
   - name: "Definir hechos - Parte 2"
     ansible.builtin.copy:
       content: "{{ ansible_hostname }}_{{ ansible_date_time.date }}_{{ ansible_date_time.hour  }}{{ ansible_date_time.minute }}{{ ansible_date_time.second  }}_{{ tower_job_id }}_PRE.txt"
-      dest: /tmp/report_pre_patch
+      dest: /tmp/report_pre_patch.txt
 
