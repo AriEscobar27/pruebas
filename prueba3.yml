@@ -14,10 +14,15 @@
       file: generar_status_aix.yaml
     vars:
       aix_report_file: "{{ aix_report_post_patch }}"
-      
+  
+  - name: "Cat report"
+    command:
+      "cat /tmp/report_pre_patch.txt"
+    register: report_pre_patch
+    
   - name: "Get report_pre_patch"
     ansible.builtin.set_fact:
-      aix_report_pre_patch_var: "{{ lookup('ansible.builtin.file', '/tmp/report_pre_patch.txt') }}"
+      aix_report_pre_patch: "{{ report_pre_patch.stdout }}"
       
   - name: "Comparar informacion de reportes pre y post patching "
     ansible.builtin.shell: >-
