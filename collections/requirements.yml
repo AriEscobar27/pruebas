@@ -1,0 +1,8 @@
+---
+collections:
+  - name: community.general
+    version: 6.0.1
+  - name: community.vmware
+    version: 3.1.0
+  - name: ibm.power_aix
+    version: 1.5.1
