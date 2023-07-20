@@ -19,8 +19,11 @@
     register: umount_result
 
   - debug:
+      msg: "{{umount_result}}"
+
+  - debug:
       msg: "El FS bk_mksysb no se monto"
-    when: umount_result.rc != 0
+
 
 
 
