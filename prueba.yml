@@ -23,6 +23,7 @@
 
   - debug:
       msg: "El FS bk_mksysb no se monto"
+    when: umount_result.failed == true
 
 
 
