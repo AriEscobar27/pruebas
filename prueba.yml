@@ -14,7 +14,13 @@
   - name: Umount FS
     mount:
       path: /
-      state: remounted
+      state: unmounted
+      ignore_errors: true
+      register: umount_result
+
+  - debug:
+      msg: "El FS bk_mksysb no se monto"
+    when: umount_result.rc != 0
 
 
 
