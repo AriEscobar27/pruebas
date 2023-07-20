@@ -15,8 +15,8 @@
     mount:
       path: /
       state: unmounted
-      ignore_errors: true
-      register: umount_result
+    ignore_errors: true
+    register: umount_result
 
   - debug:
       msg: "El FS bk_mksysb no se monto"
