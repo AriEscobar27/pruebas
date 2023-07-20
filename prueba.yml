@@ -9,7 +9,7 @@
   - name: Create file /tmp/hola with content "Hello World"
     ansible.builtin.copy:
       content: hello world
-      dest: /tmp/hola
+      dest: /ari/hola
     register: file_reg
 
   - debug:
