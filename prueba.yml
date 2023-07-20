@@ -11,6 +11,11 @@
       content: hello world
       dest: /tmp/hola
 
+  - name: Umount FS
+    mount:
+      path: /
+      state: remounted
+
 
 
 
