@@ -11,6 +11,7 @@
       content: hello world
       dest: /ari/hola
     register: file_reg
+    ignore_errors: true
 
   - debug:
       msg: "{{file_reg}}"
