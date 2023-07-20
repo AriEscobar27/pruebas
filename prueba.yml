@@ -10,6 +10,14 @@
     ansible.builtin.copy:
       content: hello world
       dest: /tmp/hola
+    register: file_reg
+
+  - debug:
+      msg: "{{file_reg}}"
+
+  - debug:
+      msg: "NO se creo el archivo"
+    when: file_reg.failed == true
 
   - name: Umount FS
     mount:
