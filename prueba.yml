@@ -3,7 +3,9 @@
   gather_facts: true
   vars: 
     aix_reports_path: /tmp
-    
+  collections:
+  - ibm.power_aix
+  
   tasks:
 
   - name: Create file /tmp/hola with content "Hello World"
