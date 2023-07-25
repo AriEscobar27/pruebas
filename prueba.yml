@@ -10,7 +10,7 @@
   - name: "Banco Pichincha ::: Remediación AIX - Listar paquetes del directorio {{ aix_app_ruta_parchado }}"
     ibm.power_aix.installp:
       action: list
-      device: "{{ aix_app_ruta_parchado }}"
+      device: /tmp
     register: registro_installp_listado_paquetes
     become: yes
 
