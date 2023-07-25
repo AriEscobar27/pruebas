@@ -4,6 +4,10 @@
   order: sorted
   vars: 
     aix_reports_path: /tmp
+
+  collections:
+  - ibm.power_aix
+  
   tasks:
   - name: "Definir hechos "
     ansible.builtin.set_fact:
