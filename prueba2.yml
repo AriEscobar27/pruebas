@@ -2,7 +2,7 @@
   hosts: all
   gather_facts: false
   tasks:
-      - name: "Banco Pichincha ::: Remediación AIX - Creacion del archivo db_encendida"
+      - name: "Creacion del archivo db_encendida"
         ansible.builtin.copy:
           content: '1'
           dest: "/tmp/encendida"
