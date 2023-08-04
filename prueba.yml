@@ -7,7 +7,7 @@
   - ibm.power_aix
   
   tasks:
-  - name: "Banco Pichincha ::: Remediación AIX - Listar paquetes del directorio {{ aix_app_ruta_parchado }}"
+  - name: Listar paquetes del directorio {{ aix_app_ruta_parchado }}
     ibm.power_aix.installp:
       action: list
       device: /tmp
