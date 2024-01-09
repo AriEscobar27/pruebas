@@ -1,8 +1,16 @@
-- name: "Create file"
-  hosts: all
+- name: "Print Dict"
+  hosts: localhost
   gather_facts: false
+  vars:
+    projects:
+      pagos:
+        dc1: orqpagos1002
+      clientes:
+        dc1: wsclientes0169
+      prueba:
+        dc1: podprueba
   tasks:
-      - name: "Creacion del archivo db_encendida"
-        ansible.builtin.copy:
-          content: '1'
-          dest: "/tmp/encendida"
+      - name: "Print variables"
+        ansible.builtin.debug:
+          msg: "Project {{ item.key }} has {{ item.value.dc1 }})"
+        loop: "{{ lookup('ansible.builtin.dict', projects) }}"
