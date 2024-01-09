@@ -15,3 +15,10 @@
         ansible.builtin.debug:
           msg: "Project {{ item.key }} has {{ item.value.dc1 }} and {{ item.value.dc2 }})"
         loop: "{{ lookup('ansible.builtin.dict', projects) }}"
+        when: {{ item.key }} == prueba
+
+      - name: "Print variables"
+        ansible.builtin.debug:
+          msg: "Project {{ item.key }} has {{ item.value.dc1 }})"
+        loop: "{{ lookup('ansible.builtin.dict', projects) }}"
+        when: {{ item.key }} == pagos or clientes
