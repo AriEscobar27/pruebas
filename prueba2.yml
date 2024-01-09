@@ -21,4 +21,4 @@
         ansible.builtin.debug:
           msg: "Project {{ item.key }} has {{ item.value.dc1 }})"
         loop: "{{ lookup('ansible.builtin.dict', projects) }}"
-        when: "'pagos' in item.key" or "'clientes' in item.key"
+        when: "'pagos' in item.key"
